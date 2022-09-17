@@ -15,9 +15,11 @@ module.exports = {
 async function createOne(authUser, comment, params, flags) {
     try {
         let result;
-
+        if(authUser.id != "6325db4be0bd0165d8bf8c38"){
+            comment.isApproved = true;
+        }
         result = await commentModel(comment).save();
-
+         
         //response
         return Promise.resolve({ code: 200, message: "one comment created successfully", data: result });
     } catch (error) {

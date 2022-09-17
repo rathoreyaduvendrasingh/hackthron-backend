@@ -230,7 +230,7 @@ async function updateUser(req, res) {
               return res.status(200).json({
                 status: 'SUCCESS',
                 data: doc,
-                message: 'BLOG UPDATED SUCCESSFULLY!',
+                message: 'UPDATED SUCCESSFULLY!',
               });
             }
           );

@@ -1,13 +1,13 @@
 {
-  "name": "clickonic",
+  "name": "Vada_Paav",
   "version": "1.0.0",
-  "description": "",
+  "description": "Blogging website where you can add blogs",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/app.js"
   },
-  "author": "Aman-Punekar",
+  "author": "Vada-Paav",
   "license": "ISC",
   "dependencies": {
     "@google-cloud/translate": "^6.3.1",

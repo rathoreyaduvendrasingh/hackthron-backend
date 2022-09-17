@@ -94,9 +94,9 @@ async function filteredBlog(req, res) {
 async function createOne(req, res) {
   try {
     let error, result, flags;
-    console.log('req.user', req.authUser);
-    console.log('req.body', req.body);
-    console.log('req.params', req.params, flags);
+    // console.log('req.user', req.authUser);
+    // console.log('req.body', req.body);
+    // console.log('req.params', req.params, flags);
     if (!req.body.title) {
       throw new Error('Title is either missing or invalid', 400, null);
     }
@@ -112,6 +112,7 @@ async function createOne(req, res) {
     if (!req.body.blogText) {
       throw new Error('Blog text is either missing or invalid', 400, null);
     }
+    console.log(req.originalUrl)
     if (req.originalUrl === '/api/guest/blog') {
       if (!req.body.username) {
         throw new Error('Name is either missing or invalid', 400, null);
@@ -124,9 +125,9 @@ async function createOne(req, res) {
       req.body.userId = req.authUser.id;
       req.body.isGuest = false;
     }
-
+    //console.log(req.authUser,req.body)
     [error, result] = await To(
-      blogHelper.createOne(req.authUser, req.body, req.params, flags)
+      blogHelper.createOne(req.authUser,req.body, req.params, flags)
     );
     if (error) {
       throw new Error(error.message, error.code, error.data);

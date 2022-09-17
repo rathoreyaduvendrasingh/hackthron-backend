@@ -24,7 +24,7 @@ async function createOne(authUser, blog, params, flags) {
     if (!flags) {
       flags = {};
     }
-    console.log(blog, authUser.id)
+    //console.log(blog)
     if (!blog.isGuest) {
       const user = await userModel.findById(authUser.id);
       console.log(user)
@@ -51,11 +51,17 @@ async function createOne(authUser, blog, params, flags) {
       // })
         // userHelper.search(authUser, { _id: authUser.id }, params, flags)
      
+    }else{
+      const user = await userModel.findById("6325db4be0bd0165d8bf8c38");
+      console.log(user)
+      authUser = user
+      //console.log(user)
     }
 
     [error, result] = await To(
       blogService.createOne(authUser, blog, params, flags)
     );
+    console.log(error)
     if (error) {
       throw new Error(error.message, error.code, error.data);
     }

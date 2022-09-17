@@ -26,7 +26,8 @@ async function createOne(authUser, blog, params, flags) {
     if (!foundcategory.subcategory.includes(blog.subcategory)) {
       throw new Error("Subcategory doesn't exist!");
     }
-
+    //console.log(authUser.isAdmin)
+    
     const isApproved = authUser.isAdmin ? true : false;
     result = await blogModel({
       ...blog,
@@ -34,7 +35,7 @@ async function createOne(authUser, blog, params, flags) {
       subcategory: blog.subcategory,
       isApproved: isApproved,
     }).save();
-
+    //console.log(result)
     //response
     return Promise.resolve({
       code: 200,
@@ -49,6 +50,7 @@ async function createOne(authUser, blog, params, flags) {
         data: error.data,
       });
     } else {
+      //console.log(error)
       return Promise.reject({
         code: 500,
         message: 'Error while creating a blog: ' + error,

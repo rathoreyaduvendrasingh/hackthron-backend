@@ -26,7 +26,6 @@ module.exports = {
 async function signup(req, res) {
     try {
         let error, result, accessToken;
-
         if (!req.body) {
             throw new Error("Signup data missing", 400, null)
         }
@@ -82,6 +81,7 @@ async function signup(req, res) {
     } catch (error) {
         if (error && error.code && error.message) {
             res.send({ code: error.code, message: error.message, data: error.data });
+            console.log(error.message)
         } else {
             res.send({ code: 500, message: "Error while signing up: " + error, data: null });
         }

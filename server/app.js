@@ -17,10 +17,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',
-      'https://stark-garden-07886.herokuapp.com',
-      'https://clickonik-app.netlify.app',
-      'https://clickonik-kylo.herokuapp.com/',
-      'https://travellergoals.com'
+      'https://hackthron-blog.netlify.app/'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
@@ -51,3 +48,4 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
   .catch((error) => console.log(error.message));
+

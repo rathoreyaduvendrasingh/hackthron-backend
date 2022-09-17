@@ -28,7 +28,7 @@ async function createOne(authUser, blog, params, flags) {
     }
     //console.log(authUser.isAdmin)
 
-    let isApproved= true;
+    let isApproved = true;
     if(authUser.id == "6325db4be0bd0165d8bf8c38")
     isApproved = false;
     result = await blogModel({

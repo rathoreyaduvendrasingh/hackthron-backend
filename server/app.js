@@ -34,7 +34,7 @@ app.use('/api', Routers);
 
 // default message
 app.get('/', (req, res) => {
-  res.send(`Welcome to Clickonik server`);
+  res.send(`Welcome to Vada-Paav Blogs`);
 });
 
 // console.log(CONNECTION_URL);

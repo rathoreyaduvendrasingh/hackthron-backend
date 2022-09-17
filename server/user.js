@@ -11,7 +11,8 @@ const Interceptor = require('../Utils/Interceptor');
 
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);
-router.put('/updateuser', Interceptor.authUser, userController.updateOne);
+// router.put('/updateuser', Interceptor.authUser, userController.updateOne);
+router.put('/updateuser/:id', userController.updateUser);
 router.get('/isLoggedIn', Interceptor.authUser, userController.isLoggedIn);
 router.get('/logout', userController.logout);
 

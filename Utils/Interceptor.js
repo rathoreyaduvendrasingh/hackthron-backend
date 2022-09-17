@@ -12,7 +12,7 @@ async function authUser(req, res, next) {
   try {
     const accessToken =
       req.cookies.accessToken || req.headers['x-access-token'];
-
+    console.log(req.cookies)
     console.log(accessToken);
 
     if (accessToken) {

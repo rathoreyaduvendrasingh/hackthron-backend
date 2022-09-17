@@ -6,6 +6,7 @@ const To = require("../../Utils/To");
 const Error = require("../../Utils/Error");
 const Validations = require("../../Utils/Validations");
 const Blog = require("../models/Blog");
+const User =require("../models/User")
 const mongoose = require('mongoose');
 const Comment = require('../models/Comment');
 
@@ -13,6 +14,7 @@ module.exports = {
     signup: signup,
     signin: signin,
     updateOne: updateOne,
+    updateUser: updateUser,
     logout: logout,
     isLoggedIn: isLoggedIn,
     starRating: starRating,
@@ -163,7 +165,7 @@ async function isLoggedIn(req, res) {
 async function updateOne(req, res) {
     try {
         let error, result, flags;
-
+        console.log(req.body)
         if (!req.body) {
             throw new Error("Required fileds missing", 400, null);
         }
@@ -177,7 +179,7 @@ async function updateOne(req, res) {
         if (!req.body.profile) {
             throw new Error("Profile pic is missing", 400, null);
         }
-
+        
         [error, result] = await To(userHelper.updateOne(req.authUser, req.body, { _userId: req.authUser.id }, flags));
         if (error) {
             throw new Error(error.message, error.code, error.data);
@@ -193,6 +195,51 @@ async function updateOne(req, res) {
         }
     }
 }
+
+async function updateUser(req, res) {
+    const userId = req.params.id;
+  console.log(userId)
+        let error, result, flags;
+        console.log(req.body)
+        if (!req.body) {
+            throw new Error("Required fileds missing", 400, null);
+        }
+
+        if (!req.body.username) {
+            throw new Error("Username is either missing or invalid", 400, null);
+        }
+        if (!req.body.about) {
+            throw new Error("About the auther is missing", 400, null);
+        }
+        if (!req.body.profile) {
+            throw new Error("Profile pic is missing", 400, null);
+        
+        }   
+        else{ 
+    User.findByIdAndUpdate(
+            userId,
+            req.body,
+            { returnOriginal: 'after' },
+            (err, doc) => {
+              if (err)
+                return res.status(400).json({
+                  status: 'FAILURE',
+                  message: 'INTERNAL SERVER ERROR!',
+                });
+      
+              return res.status(200).json({
+                status: 'SUCCESS',
+                data: doc,
+                message: 'BLOG UPDATED SUCCESSFULLY!',
+              });
+            }
+          );
+        }
+    }
+
+
+
+
 
 async function logout(req, res) {
     try {

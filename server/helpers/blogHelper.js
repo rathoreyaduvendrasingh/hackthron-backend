@@ -61,7 +61,7 @@ async function createOne(authUser, blog, params, flags) {
     [error, result] = await To(
       blogService.createOne(authUser, blog, params, flags)
     );
-    console.log(error)
+    // console.log(error)
     if (error) {
       throw new Error(error.message, error.code, error.data);
     }

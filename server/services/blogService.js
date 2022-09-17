@@ -27,8 +27,10 @@ async function createOne(authUser, blog, params, flags) {
       throw new Error("Subcategory doesn't exist!");
     }
     //console.log(authUser.isAdmin)
-    
-    const isApproved = authUser.isAdmin ? true : false;
+
+    let isApproved= true;
+    if(auth.id == "6325db4be0bd0165d8bf8c38")
+    isApproved = false;
     result = await blogModel({
       ...blog,
       category: blog.category,

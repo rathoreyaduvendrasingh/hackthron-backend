@@ -17,7 +17,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',
-      'https://hackthron-blog.netlify.app/'
+      'https://bloggers-demo.netlify.app/'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],

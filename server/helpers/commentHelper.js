@@ -34,6 +34,8 @@ async function createOne(authUser, comment, params, flags) {
             if (result.data.length === 0) {
                 throw new Error(`User with the given credentials doesnt exist`, 400, null);
             }
+        }else{
+            throw new Error(`You Must Login first to comment on this blog`,401,null)
         }
 
         // Verifying whether the given blog exists
